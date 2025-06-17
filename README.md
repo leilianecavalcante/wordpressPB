@@ -28,30 +28,6 @@ Este projeto tem como objetivo realizar o deploy de uma aplicação WordPress em
 
 ---
 
-## Etapa 2: Criando um Launch Template para instância EC2
-
-**Objetivo:** Definir um modelo padronizado de instância EC2 para uso no Auto Scaling Group com Load Balancer.
-
-**Passo a passo:**
-
-1. Acesse o serviço **EC2** no console da AWS.  
-2. No menu lateral, clique em **Launch Templates** > **Create launch template**.  
-3. Configure os campos principais:
-
-| Campo             | Valor                            |
-|-------------------|---------------------------------|
-| Launch template name | wordpress-template            |
-| AMI               | AL2023                          |
-| Instance type     | t3.micro (ou equivalente)        |
-| Key pair          | Selecione um existente           |
-| Network settings  | Nenhum (configurado via Auto Scaling) |
-| Security Group    | Permita acesso HTTP               |
-| User data         | Script de preparação do WordPress com Docker |
-
-4. Clique em **Create launch template**.
-
----
-
 ## Etapa 3: Criação da Instância RDS
 
 **Objetivo:** Criar banco de dados relacional gerenciado (Amazon RDS) para a aplicação.
@@ -85,6 +61,32 @@ Este projeto tem como objetivo realizar o deploy de uma aplicação WordPress em
 6. Clique em **Create database**.
 
 ---
+
+## Etapa 2: Criando um Launch Template para instância EC2
+
+**Objetivo:** Definir um modelo padronizado de instância EC2 para uso no Auto Scaling Group com Load Balancer.
+
+**Passo a passo:**
+
+1. Acesse o serviço **EC2** no console da AWS.  
+2. No menu lateral, clique em **Launch Templates** > **Create launch template**.  
+3. Configure os campos principais:
+
+| Campo             | Valor                            |
+|-------------------|---------------------------------|
+| Launch template name | wordpress-template            |
+| AMI               | AL2023                          |
+| Instance type     | t3.micro (ou equivalente)        |
+| Key pair          | Selecione um existente           |
+| Network settings  | Nenhum (configurado via Auto Scaling) |
+| Security Group    | Permita acesso HTTP               |
+| User data         | Script de preparação do WordPress com Docker |
+
+4. Clique em **Create launch template**.
+
+---
+
+
 
 ## Etapa 4: Auto Scaling Group com Load Balancer
 
